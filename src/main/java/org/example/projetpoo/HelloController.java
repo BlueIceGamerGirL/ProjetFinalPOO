@@ -19,29 +19,55 @@ public class HelloController {
     @FXML private TableColumn<Professeur, String> colProfId;
     @FXML private TableColumn<Professeur, Double> colProfSalaire;
 
+    @FXML private TableView<Etudiant> tableEtudiants;
+    @FXML private TableColumn<Etudiant, String> colEtudNom;
+    @FXML private TableColumn<Etudiant, String> colEtudPrenom;
+    @FXML private TableColumn<Etudiant, String> colEtudId;
+    @FXML private TableColumn<Etudiant, Double> colEtudCoteR;
+
     @FXML
     public void initialize() {
+        // Professeurs
         colProfNom.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getNom()));
         colProfPrenom.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getPrenom()));
         colProfId.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getIdentifiant()));
         colProfSalaire.setCellValueFactory(c -> new SimpleDoubleProperty(c.getValue().getSalaire()).asObject());
+        tableProfesseurs.getItems().addAll(Json.chargerProfesseurs());
 
-        List<Professeur> profs = Json.chargerProfesseurs();
-        tableProfesseurs.getItems().addAll(profs);
+        // Étudiants
+        colEtudNom.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getNom()));
+        colEtudPrenom.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getPrenom()));
+        colEtudId.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getIdentifiant()));
+        colEtudCoteR.setCellValueFactory(c -> new SimpleDoubleProperty(c.getValue().getCoteR()).asObject());
+        tableEtudiants.getItems().addAll(Json.chargerEtudiants());
     }
 
     @FXML
     private void ajouterProfesseur() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("AjouterProfesseur.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AjouterProfesseurs.fxml"));
             Stage popup = new Stage();
             popup.setTitle("Ajouter un professeur");
             popup.setScene(new Scene(loader.load(), 400, 420));
             popup.initModality(Modality.WINDOW_MODAL);
-
             AjouterProfesseurController ctrl = loader.getController();
             ctrl.setParentController(this);
+            popup.showAndWait();
+        } catch (IOException e) {
+            System.out.println("Erreur : " + e.getMessage());
+        }
+    }
 
+    @FXML
+    private void ajouterEtudiant() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AjouterEtudiant.fxml"));
+            Stage popup = new Stage();
+            popup.setTitle("Ajouter un étudiant");
+            popup.setScene(new Scene(loader.load(), 400, 420));
+            popup.initModality(Modality.WINDOW_MODAL);
+            AjouterEtudiantController ctrl = loader.getController();
+            ctrl.setParentController(this);
             popup.showAndWait();
         } catch (IOException e) {
             System.out.println("Erreur : " + e.getMessage());
@@ -50,7 +76,11 @@ public class HelloController {
 
     public void rafraichirProfesseurs() {
         tableProfesseurs.getItems().clear();
-        List<Professeur> profs = Json.chargerProfesseurs();
-        tableProfesseurs.getItems().addAll(profs);
+        tableProfesseurs.getItems().addAll(Json.chargerProfesseurs());
+    }
+
+    public void rafraichirEtudiants() {
+        tableEtudiants.getItems().clear();
+        tableEtudiants.getItems().addAll(Json.chargerEtudiants());
     }
 }
