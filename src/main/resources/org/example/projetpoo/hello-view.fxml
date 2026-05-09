@@ -1,0 +1,40 @@
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+
+<TabPane xmlns:fx="http://javafx.com/fxml"
+         fx:controller="org.example.projetpoo.HelloController"
+         tabClosingPolicy="UNAVAILABLE">
+    <tabs>
+        <Tab text="Accueil">
+            <VBox spacing="15" alignment="CENTER" style="-fx-padding: 20; -fx-background-color: #1c4b37;">
+                <Label text="Cégep Marie-Victorin" style="-fx-font-size: 28; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                <Label text="Ma place de choix." style="-fx-font-size: 18; -fx-text-fill: #97f29c"/>
+                <Label text="Bienvenue au cégep Marie-Victorin! Nous offrons beaucoup de programmes différents!" wrapText="true" style="-fx-font-size: 14; -fx-text-fill: #97f29c;"/>
+            </VBox>
+        </Tab>
+        <Tab text="Professeurs">
+            <VBox spacing="10" style="-fx-padding: 15;">
+                <HBox spacing="10">
+                    <Button text="Ajouter" onAction="#ajouterProfesseur"/>
+                </HBox>
+                <TableView fx:id="tableProfesseurs">
+                    <columns>
+                        <TableColumn fx:id="colProfNom" text="Nom" prefWidth="150"/>
+                        <TableColumn fx:id="colProfPrenom" text="Prénom" prefWidth="150"/>
+                        <TableColumn fx:id="colProfId" text="Identifiant" prefWidth="150"/>
+                        <TableColumn fx:id="colProfSalaire" text="Salaire" prefWidth="150"/>
+                    </columns>
+                </TableView>
+            </VBox>
+        </Tab>
+        <Tab text="Cours"/>
+        <Tab text="Étudiants"/>
+        <Tab text="Bonus"/>
+    </tabs>
+</TabPane>
