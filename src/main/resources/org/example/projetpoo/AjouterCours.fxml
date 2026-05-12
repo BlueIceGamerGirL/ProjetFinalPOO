@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Button?>
+
+<VBox spacing="15" style="-fx-padding: 20;" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.projetpoo.AjouterCoursController">
+
+    <Label text="Ajouter un cours" style="-fx-font-size: 16; -fx-font-weight: bold;"/>
+
+    <Label text="Nom"/>
+    <TextField fx:id="champNom" promptText="Nom du cours"/>
+
+    <Label text="Code"/>
+    <TextField fx:id="champCode" promptText="Code du cours"/>
+
+    <Label text="Description"/>
+    <TextArea fx:id="champDescription" promptText="Description" prefRowCount="3"/>
+
+    <Label text="Professeur"/>
+    <ComboBox fx:id="dropdownProf" maxWidth="Infinity"/>
+
+    <HBox spacing="10">
+        <Button text="Annuler" onAction="#annuler"/>
+        <Button text="Ajouter" onAction="#ajouter"/>
+    </HBox>
+
+</VBox>

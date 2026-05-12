@@ -25,6 +25,12 @@ public class HelloController {
     @FXML private TableColumn<Etudiant, String> colEtudId;
     @FXML private TableColumn<Etudiant, Double> colEtudCoteR;
 
+    @FXML private TableView<Cours> tableCours;
+    @FXML private TableColumn<Cours, String> colCoursNom;
+    @FXML private TableColumn<Cours, String> colCoursCode;
+    @FXML private TableColumn<Cours, String> colCoursDesc;
+    @FXML private TableColumn<Cours, String> colCoursProf;
+
     @FXML
     public void initialize() {
         // Professeurs
@@ -40,6 +46,13 @@ public class HelloController {
         colEtudId.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getIdentifiant()));
         colEtudCoteR.setCellValueFactory(c -> new SimpleDoubleProperty(c.getValue().getCoteR()).asObject());
         tableEtudiants.getItems().addAll(Json.chargerEtudiants());
+
+        // Cours
+        colCoursNom.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getNom()));
+        colCoursCode.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getCode()));
+        colCoursDesc.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getDescription()));
+        colCoursProf.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getProfesseur()));
+        tableCours.getItems().addAll(Json.chargerCours());
     }
 
     @FXML
@@ -74,6 +87,22 @@ public class HelloController {
         }
     }
 
+    @FXML
+    private void ajouterCours() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AjouterCours.fxml"));
+            Stage popup = new Stage();
+            popup.setTitle("Ajouter un cours");
+            popup.setScene(new Scene(loader.load(), 400, 480));
+            popup.initModality(Modality.WINDOW_MODAL);
+            AjouterCoursController ctrl = loader.getController();
+            ctrl.setParentController(this);
+            popup.showAndWait();
+        } catch (IOException e) {
+            System.out.println("Erreur : " + e.getMessage());
+        }
+    }
+
     public void rafraichirProfesseurs() {
         tableProfesseurs.getItems().clear();
         tableProfesseurs.getItems().addAll(Json.chargerProfesseurs());
@@ -82,5 +111,10 @@ public class HelloController {
     public void rafraichirEtudiants() {
         tableEtudiants.getItems().clear();
         tableEtudiants.getItems().addAll(Json.chargerEtudiants());
+    }
+
+    public void rafraichirCours() {
+        tableCours.getItems().clear();
+        tableCours.getItems().addAll(Json.chargerCours());
     }
 }
