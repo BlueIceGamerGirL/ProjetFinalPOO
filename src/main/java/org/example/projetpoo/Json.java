@@ -71,4 +71,24 @@ public class Json {
             return new ArrayList<>();
         }
     }
+
+    public static void sauvegarderProjets(List<Projet> liste) {
+        try (FileWriter writer = new FileWriter("projets.json")) {
+            gson.toJson(liste, writer);
+        } catch (IOException e) {
+            System.out.println("Erreur : " + e.getMessage());
+        }
+    }
+
+    public static List<Projet> chargerProjets() {
+        File fichier = new File("projets.json");
+        if (!fichier.exists()) return new ArrayList<>();
+        Type type = new TypeToken<List<Projet>>() {}.getType();
+        try (FileReader reader = new FileReader(fichier)) {
+            List<Projet> liste = gson.fromJson(reader, type);
+            return liste != null ? liste : new ArrayList<>();
+        } catch (IOException e) {
+            return new ArrayList<>();
+        }
+    }
 }

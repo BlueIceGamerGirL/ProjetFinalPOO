@@ -18,11 +18,11 @@
     <Label text="Code"/>
     <TextField fx:id="champCode" promptText="Code du cours"/>
 
-    <Label text="Description"/>
-    <TextArea fx:id="champDescription" promptText="Description" prefRowCount="3"/>
+    <Label text="Description" />
+    <TextArea fx:id="champDescription" promptText="Description" prefRowCount="3" />
 
     <Label text="Professeur"/>
-    <ComboBox fx:id="dropdownProf" maxWidth="Infinity"/>
+    <ComboBox fx:id="listeProf" maxWidth="Infinity"/>
 
     <HBox spacing="10">
         <Button text="Annuler" onAction="#annuler"/>

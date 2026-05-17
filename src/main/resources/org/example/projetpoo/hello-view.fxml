@@ -8,6 +8,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
+<?import javafx.scene.control.ListView?>
 
 <TabPane xmlns:fx="http://javafx.com/fxml"
          fx:controller="org.example.projetpoo.HelloController"
@@ -26,13 +27,14 @@
             </VBox>
         </Tab>
         <Tab text="Professeurs">
-            <VBox spacing="10" style="-fx-padding: 15;">
+            <VBox spacing="10" style="-fx-padding: 15; -fx-background-color: #1c4b37;">
+                <Label text="Professeurs" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #97f29c;"/>
                 <HBox spacing="10">
-                    <Button text="Ajouter" onAction="#ajouterProfesseur"/>
+                    <Button text="Ajouter" onAction="#ajouterProfesseur" style="-fx-color: #97f29c;"/>
                 </HBox>
-                <TableView fx:id="tableProfesseurs">
+                <TableView fx:id="tableProfesseurs" style="-fx-color: #97f29c;">
                     <columns>
-                        <TableColumn fx:id="colProfNom" text="Nom" prefWidth="150"/>
+                        <TableColumn fx:id="colProfNom" text="Nom" prefWidth="150" />
                         <TableColumn fx:id="colProfPrenom" text="Prénom" prefWidth="150"/>
                         <TableColumn fx:id="colProfId" text="Identifiant" prefWidth="150"/>
                         <TableColumn fx:id="colProfSalaire" text="Salaire" prefWidth="150"/>
@@ -41,13 +43,14 @@
             </VBox>
         </Tab>
         <Tab text="Étudiants">
-            <VBox spacing="10" style="-fx-padding: 15;">
+            <VBox spacing="10" style="-fx-padding: 15; -fx-background-color: #1c4b37;">
+                <Label text="Étudiants" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #97f29c;"/>
                 <HBox spacing="10">
-                    <Button text="Ajouter" onAction="#ajouterEtudiant"/>
+                    <Button text="Ajouter" onAction="#ajouterEtudiant" style="-fx-color: #97f29c;"/>
                 </HBox>
-                <TableView fx:id="tableEtudiants">
+                <TableView fx:id="tableEtudiants" style="-fx-color: #97f29c;">
                     <columns>
-                        <TableColumn fx:id="colEtudNom" text="Nom" prefWidth="150"/>
+                        <TableColumn fx:id="colEtudNom" text="Nom" prefWidth="150" />
                         <TableColumn fx:id="colEtudPrenom" text="Prénom" prefWidth="150"/>
                         <TableColumn fx:id="colEtudId" text="Identifiant" prefWidth="150"/>
                         <TableColumn fx:id="colEtudCoteR" text="Cote R" prefWidth="150"/>
@@ -56,11 +59,12 @@
             </VBox>
         </Tab>
         <Tab text="Cours">
-            <VBox spacing="10" style="-fx-padding: 15;">
+            <VBox spacing="10" style="-fx-padding: 15; -fx-background-color: #1c4b37;">
+                <Label text="Cours" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #97f29c;"/>
                 <HBox spacing="10">
-                    <Button text="Ajouter" onAction="#ajouterCours"/>
+                    <Button text="Ajouter" onAction="#ajouterCours" style="-fx-color: #97f29c;"/>
                 </HBox>
-                <TableView fx:id="tableCours">
+                <TableView fx:id="tableCours" style="-fx-color: #97f29c;">
                     <columns>
                         <TableColumn fx:id="colCoursNom" text="Nom" prefWidth="150"/>
                         <TableColumn fx:id="colCoursCode" text="Code" prefWidth="100"/>
@@ -70,6 +74,14 @@
                 </TableView>
             </VBox>
         </Tab>
-        <Tab text="Bonus"/>
+        <Tab text="Projets">
+            <VBox spacing="10" style="-fx-padding: 15; -fx-background-color: #1c4b37;">
+                <Label text="Projets des étudiants" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #97f29c;"/>
+                <HBox spacing="10">
+                    <Button text="Ajouter" onAction="#ajouterProjet" style="-fx-color: #97f29c;"/>
+                </HBox>
+                <ListView fx:id="listeProjets" style="-fx-color: #97f29c;"/>
+            </VBox>
+        </Tab>
     </tabs>
 </TabPane>

@@ -31,6 +31,8 @@ public class HelloController {
     @FXML private TableColumn<Cours, String> colCoursDesc;
     @FXML private TableColumn<Cours, String> colCoursProf;
 
+    @FXML private ListView<Projet> listeProjets;
+
     @FXML
     public void initialize() {
         // Professeurs
@@ -53,6 +55,9 @@ public class HelloController {
         colCoursDesc.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getDescription()));
         colCoursProf.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getProfesseur()));
         tableCours.getItems().addAll(Json.chargerCours());
+
+        // Projets
+        listeProjets.getItems().addAll(Json.chargerProjets());
     }
 
     @FXML
@@ -103,6 +108,22 @@ public class HelloController {
         }
     }
 
+    @FXML
+    private void ajouterProjet() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AjouterProjet.fxml"));
+            Stage popup = new Stage();
+            popup.setTitle("Ajouter un projet");
+            popup.setScene(new Scene(loader.load(), 400, 480));
+            popup.initModality(Modality.WINDOW_MODAL);
+            AjouterProjetController ctrl = loader.getController();
+            ctrl.setParentController(this);
+            popup.showAndWait();
+        } catch (IOException e) {
+            System.out.println("Erreur : " + e.getMessage());
+        }
+    }
+
     public void rafraichirProfesseurs() {
         tableProfesseurs.getItems().clear();
         tableProfesseurs.getItems().addAll(Json.chargerProfesseurs());
@@ -116,5 +137,10 @@ public class HelloController {
     public void rafraichirCours() {
         tableCours.getItems().clear();
         tableCours.getItems().addAll(Json.chargerCours());
+    }
+
+    public void rafraichirProjets() {
+        listeProjets.getItems().clear();
+        listeProjets.getItems().addAll(Json.chargerProjets());
     }
 }

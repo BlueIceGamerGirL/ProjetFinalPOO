@@ -1,16 +1,17 @@
 package org.example.projetpoo;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.TextField;
+import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import java.util.List;
 
-public class AjouterCoursController {
+public class AjouterProjetController {
 
     @FXML private TextField champNom;
-    @FXML private TextField champCode;
+    @FXML private TextField champId;
     @FXML private TextArea champDescription;
-    @FXML private ComboBox<String> listeProf;
+    @FXML private TextField champEleve;
 
     private HelloController parentController;
 
@@ -19,31 +20,24 @@ public class AjouterCoursController {
     }
 
     @FXML
-    public void initialize() {
-        List<Professeur> profs = Json.chargerProfesseurs();
-        for (Professeur p : profs) {
-            listeProf.getItems().add(p.getPrenom() + " " + p.getNom());
-        }
-    }
-
-    @FXML
     private void ajouter() {
         String nom = champNom.getText().trim();
-        String code = champCode.getText().trim();
+        String id = champId.getText().trim();
         String description = champDescription.getText().trim();
-        String prof = listeProf.getValue();
+        String eleve = champEleve.getText().trim();
 
-        if (nom.isEmpty() || code.isEmpty() || description.isEmpty() || prof == null) {
+        if (nom.isEmpty() || id.isEmpty() || description.isEmpty() || eleve.isEmpty()) {
             return;
         }
 
-        Cours cours = new Cours(nom, code, description, prof);
-        List<Cours> listeCours = Json.chargerCours();
-        listeCours.add(cours);
-        Json.sauvegarderCours(listeCours);
+        Projet projet = new Projet(nom, id, description, eleve);
+
+        List<Projet> projets = Json.chargerProjets();
+        projets.add(projet);
+        Json.sauvegarderProjets(projets);
 
         if (parentController != null) {
-            parentController.rafraichirCours();
+            parentController.rafraichirProjets();
         }
 
         fermer();
