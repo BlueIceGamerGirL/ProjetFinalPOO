@@ -4,5 +4,11 @@
     "prenom": "a",
     "identifiant": "a",
     "coteR": 23.0
+  },
+  {
+    "nom": "Étudiant",
+    "prenom": "étudiant",
+    "identifiant": "214",
+    "coteR": 214.0
   }
 ]

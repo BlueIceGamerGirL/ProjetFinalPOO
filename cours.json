@@ -4,5 +4,17 @@
     "code": "12321",
     "description": "aaaaaaa",
     "professeur": "a a"
+  },
+  {
+    "nom": "sadsa",
+    "code": "21321",
+    "description": "sdas",
+    "professeur": "asds adsa"
+  },
+  {
+    "nom": "cours",
+    "code": "123",
+    "description": "Description",
+    "professeur": "professeur Professeur"
   }
 ]

@@ -4,5 +4,17 @@
     "prenom": "a",
     "identifiant": "2231",
     "salaire": 2132.0
+  },
+  {
+    "nom": "adsa",
+    "prenom": "asds",
+    "identifiant": "21342",
+    "salaire": 2312.0
+  },
+  {
+    "nom": "Professeur",
+    "prenom": "professeur",
+    "identifiant": "1231",
+    "salaire": 2143.0
   }
 ]
